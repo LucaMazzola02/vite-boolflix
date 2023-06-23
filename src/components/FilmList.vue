@@ -1,7 +1,8 @@
 <template>
   <div class="container">
-    <div class="row">
-      <article v-for="movie in movies" class="card mb-5 col-12 p-0">
+    <div class="row text-center">
+      <h1 class="mb-3">Film</h1>
+      <article v-for="movie in movies" class="card mb-5 col-3 p-0">
         <div class="card-body text-center">
             <h2 class="card-title fw-bold">
                 {{ movie.title }}   
@@ -56,6 +57,13 @@ export default {
 
 
 <style lang="scss" scoped>
+
+h1{
+    font-size: 55px;
+    font-weight: bolder;
+    color: coral;
+  }
+  
 
 article img{width: 30px;}
 
