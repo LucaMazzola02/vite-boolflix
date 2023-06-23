@@ -10,8 +10,7 @@ export default {
       }
     },
     components: {
-      AppMain,
-      
+      AppMain,     
     }
 }
 </script>

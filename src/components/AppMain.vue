@@ -1,6 +1,6 @@
 <template>
-    <Searchbar @searched="searchFilm" />
-    <FilmList :movies="filmList" />   
+      <Searchbar @searched="searchFilm" />
+      <FilmList :movies="filmList" />   
 </template>
   
 <script>
@@ -18,8 +18,8 @@ import axios from 'axios';
         }
       },
       components: {
-      FilmList,
       Searchbar,
+      FilmList,
     },
     methods: {
         searchFilm(searchInput){
