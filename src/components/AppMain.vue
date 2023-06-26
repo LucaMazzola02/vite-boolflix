@@ -1,13 +1,11 @@
 <template>
       <Searchbar @searched="newSearch" />
-      <FilmList :movies="filmList" />   
-      <SeriesList :series="seriesList" />   
+      <FilmList :movies="filmList" />    
 </template>
   
 <script>
 import Searchbar from './FilmSearchbar.vue';
 import FilmList from './FilmList.vue';
-import SeriesList from './SeriesList.vue';
 import axios from 'axios';
 
 
@@ -17,21 +15,17 @@ import axios from 'axios';
         return {
           filmList: [],
           moviesApiUrl: 'https://api.themoviedb.org/3/search/movie',
-          seriesList: [],
-          seriesApiUrl: 'https://api.themoviedb.org/3/search/tv',
         }
       },
       components: {
       Searchbar,
       FilmList,
-      SeriesList,
     },
     methods: {
-      newSearch(searchInput){
+        newSearch(searchInput){
         this.searchFilm(searchInput);
         this.searchSeries(searchInput);
-      },
-
+        },
         searchFilm(searchInput){
             axios.get(this.moviesApiUrl, {
                     params: {
@@ -48,7 +42,7 @@ import axios from 'axios';
                     console.log(error);
                 })
         },
-    searchSeries(searchInput){
+        searchSeries(searchInput){
             axios.get(this.seriesApiUrl, {
                     params: {
                         api_key: 'fe2a1f9ba227f29a481a922b0ab31857',
@@ -65,12 +59,8 @@ import axios from 'axios';
                 })
         }
     },
-
-
-
     created(){
         this.searchFilm();
-        this.searchSeries();
     }
 }
 
