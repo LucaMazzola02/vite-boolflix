@@ -1,21 +1,27 @@
 <template>
     <article>
         <div class="card-body text-center">
-            <h2 class="card-title fw-bold">
+            <div class="card-image">
+            <img :src="`https://image.tmdb.org/t/p/w342${movie.backdrop_path}`" alt="NO-IMAGE">
+            </div>
+            <div class="description">            
+                <h2 class="card-title fw-bold">
                 {{ movie.title }}   
-            </h2>
-            <em><h4>{{ movie.original_title }}</h4></em>
+                </h2>
+                <em><h4>{{ movie.original_title }}</h4></em>
              
-            <img v-if="isLanguageAvailable(movie.original_language)" 
-            :src="getImagePath(movie.original_language)" alt="language-image"/> 
+                <img v-if="isLanguageAvailable(movie.original_language)" 
+                :src="getImagePath(movie.original_language)" alt="language-image"/> 
 
-            <span v-else>
-              {{ movie.original_language }}
-            </span>
+                <span v-else>
+                 {{ movie.original_language }}
+                </span>
             
-            <p class="movies-vote mt-3">
-                VOTO : {{ movie.vote_average }} <i class="fa-solid fa-star"></i>
-            </p> 
+                <p class="movies-vote mt-3">
+                VOTO : {{ movie.vote_average }} 
+                </p>
+
+            </div>
         </div>
       </article>   
 </template>
@@ -52,5 +58,25 @@
 <style lang="scss" scoped>
 
    article img{width: 30px;}
- 
+   .card-image{
+    display: block;
+    width: 100%;
+    height: 100%;
+    
+    
+    & img{
+        width: 100%;
+        height: 100%;
+    }
+   }
+   .description{
+    display: none;
+   }
+   .card-body:hover .card-image{
+    display: none;
+    
+   }
+   .card-body:hover .description{
+    display: block;
+   }
 </style>
