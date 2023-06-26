@@ -2,7 +2,7 @@
     <article>
         <div class="card-body text-center">
             <div class="card-image">
-            <img :src="`https://image.tmdb.org/t/p/w342${movie.poster_path}`" alt="NO-IMAGE">
+            <img :src="`https://image.tmdb.org/t/p/w342${movie.poster_path ? movie.poster_path : movie.backdrop_path}`" alt="NO-IMAGE">
             </div>
             <div class="description">            
                 <h2 class="card-title fw-bold">
@@ -72,6 +72,7 @@
     & img{
         width: 100%;
         height: 100%;
+        object-fit: cover;
     }
    }
    .description{
