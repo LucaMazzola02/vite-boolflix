@@ -2,7 +2,7 @@
     <article>
         <div class="card-body text-center">
             <div class="card-image">
-            <img :src="`https://image.tmdb.org/t/p/w342${movie.backdrop_path}`" alt="NO-IMAGE">
+            <img :src="`https://image.tmdb.org/t/p/w342${movie.poster_path}`" alt="NO-IMAGE">
             </div>
             <div class="description">            
                 <h2 class="card-title fw-bold">
@@ -18,7 +18,8 @@
                 </span>
             
                 <p class="movies-vote mt-3">
-                VOTO : {{ movie.vote_average }} 
+                    <i class="fa-solid fa-star font-yellow" v-for="n in 5 - getVote"></i>
+                    <i class="fa-solid fa-star font-grey" v-for="n in getVote"></i>
                 </p>
 
             </div>
@@ -48,9 +49,13 @@
       },
       getImagePath(img){
         return new URL(`../assets/flags/${img}.png`, import.meta.url).href;
-      }
-
+      },
     },
+    computed : {
+        getVote(){
+        return Math.ceil(this.movie.vote_average/2);
+      }
+    }
       
   }
 </script>
@@ -78,5 +83,12 @@
    }
    .card-body:hover .description{
     display: block;
+   }
+
+   .font-grey{
+    color: grey;
+   }
+   .font-yellow{
+    color: goldenrod;
    }
 </style>
